@@ -1,45 +1,63 @@
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
+import ProfileCard from '../components/ui/ProfileCard';
 
-function ProfileScreen() {
+export default function ProfilesScreen() {
+  const profiles = [
+    {
+      name: 'Nishan K M',
+      role: 'React Native Developer',
+      description: 'Passionate developer learning React Native and building mobile apps.',
+      image: require('../assets/profile.png'),
+    },
+    {
+      name: 'Alice Johnson',
+      role: 'UI/UX Designer',
+      description: 'Loves designing mobile interfaces.',
+      image: require('../assets/profile2.png'),
+    },
+    {
+      name: 'Bob Smith',
+      role: 'UI/UX Designer',
+      description: 'Passionate about design systems',
+      image: require('../assets/profile2.png'),
+    },
+    {
+      name: 'Charlie Brown',
+      role: 'Project Manager',
+      description: 'Keeps projects on track',
+      image: require('../assets/profile3.png'),
+    },
+    {
+      name: 'Diana Prince',
+      role: 'QA Engineer',
+      description: 'Finds bugs faster than anyone',
+      image: require('../assets/profile4.png'),
+    },
+    {
+      name: 'Ethan Hunt',
+      role: 'DevOps Engineer',
+      description: 'Automates everything',
+      image: require('../assets/profile5.png'),
+    },
+  ];
+
   return (
-  <View style={styles.container}>
-    <Image source={require('../assets/profile.png')} style={styles.image} />
-    <Text style={styles.name}>Nishan K M</Text>
-    <Text style={styles.role}>React Native Developer</Text>
-    <Text style={styles.description}>
-     Passionate developer learning React Native and building mobile apps.
-    </Text>
-  </View>
-);
-
+    <ScrollView contentContainerStyle={styles.container}>
+      {profiles.map((profile, index) => (
+        <ProfileCard
+          key={index}
+          name={profile.name}
+          role={profile.role}
+          description={profile.description}
+          image={profile.image}
+        />
+      ))}
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  image: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    marginBottom: 16,
-  },
-  name: {
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
-  role: {
-    fontSize: 16,
-    color: 'gray',
-    marginBottom: 12,
-  },
-  description: {
-    fontSize: 14,
-    textAlign: 'center',
-    paddingHorizontal: 30,
+    paddingVertical: 20,
   },
 });
-
-export default ProfileScreen;
