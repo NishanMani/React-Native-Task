@@ -1,18 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 
-function ProfileCard({ name, image, role, description }) {
+function ProfileCard({ name, image, role, description, onPress }) {
   return (
-    <View style={styles.card}>
-      <Image source={image} style={styles.image} />
-      <Text style={styles.name}>{name}</Text>
-      <Text style={styles.role}>{role}</Text>
-      {description && <Text style={styles.description}>{description}</Text>}
-    </View>
+    <Pressable onPress={onPress}>
+      <View style={styles.card}>
+        <Image source={image} style={styles.image} />
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.role}>{role}</Text>
+        {description && <Text style={styles.description}>{description}</Text>}
+      </View>
+    </Pressable>
   );
 }
 
 export default ProfileCard;
+
 
 const styles = StyleSheet.create({
   card: {

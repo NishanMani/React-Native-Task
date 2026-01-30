@@ -1,7 +1,8 @@
+import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import ProfileCard from '../components/ui/ProfileCard';
 
-export default function ProfilesScreen() {
+export default function ProfileScreen({ navigation }) {
   const profiles = [
     {
       name: 'Nishan K M',
@@ -11,9 +12,9 @@ export default function ProfilesScreen() {
     },
     {
       name: 'Alice Johnson',
-      role: 'UI/UX Designer',
-      description: 'Loves designing mobile interfaces.',
-      image: require('../assets/profile2.png'),
+      role: 'Business Analyst',
+      description: 'Turns requirements into actionable tasks',
+      image: require('../assets/profile1.png'),
     },
     {
       name: 'Bob Smith',
@@ -50,6 +51,9 @@ export default function ProfilesScreen() {
           role={profile.role}
           description={profile.description}
           image={profile.image}
+          onPress={() =>
+            navigation.navigate('ProfileDetails', { profile })
+          }
         />
       ))}
     </ScrollView>
